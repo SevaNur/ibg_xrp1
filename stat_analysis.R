@@ -1,5 +1,5 @@
-#скрипт для подсчета статистики
-#данные подаем уже отсортированные по возрастанию
+#counting statdata
+#data must be sorted
 
 
 #install a working environment
@@ -11,14 +11,14 @@ list<-unique(data$name)
 len<-length(list)
 
 
-#проверяем данные на нормальность тест Колмогорова-Смирнова
+#the Kolmogorov–Smirnov test for chek a normality
 for (i in 1:len) {
   name=list[i]
   cat(name)
   print(ks.test(data[data$name == name,]$distances, 'pnorm'))
 }
 
-#проверяем данные на нормальность тест Шапиро-Уилка
+#the Shapiro–Wilk test for chek a normality
 for (i in 1:len) {
   name=list[i]
   cat(name)
@@ -26,10 +26,10 @@ for (i in 1:len) {
 }
 
 
-#оба теста показывают, что данные распределены не в соответствии с нормальным распределением
-#поэтому используем непараметрический критерий Уилкоксона для сравнения облученных и необлученных выборок
+#both of tests were failed
+#using the nonparametric test of Wilcoxon for compare irradiated with nonirradiated
 
-i=1 #обнуляем i
+i=1
 while (i < len) {
   
   name1=list[i]
@@ -40,9 +40,9 @@ while (i < len) {
   
 }
 
-#используем непараметрический критерий Уилкоксона для сравнения с контролем
+#using the nonparametric test of Wilcoxon for compare with control lines
 
-i=3 #обнуляем i
+i=3
 while (i < len) {
   
   name1=list[i]
