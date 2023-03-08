@@ -5,7 +5,7 @@
 #install a working environment
 setwd('C:/Users/SevdaN/YandexDisk/LaGERinD/Users/Sevda/scripts')
 
-#load and prepeare data
+#load and prepare data
 data<-read.csv('data_for_plot.csv', sep = ";")
 list<-unique(data$name)
 len<-length(list)
